@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_marginTop="6dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="2dp"
+    android:outlineProvider="bounds"
+    android:clipToPadding="false"
+
+    >
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/contact_name"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Ashish Patel"
+                android:textColor="@color/purple_700"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/contact_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginTop="0dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="8319520553"
+                android:textColor="@color/purple_200"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="@+id/contact_name"
+                app:layout_constraintTop_toBottomOf="@+id/contact_name" />
+
+            <ImageView
+                android:id="@+id/display_picture"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="42dp"
+                android:src="@drawable/ic_contact"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+</androidx.appcompat.widget.LinearLayoutCompat>

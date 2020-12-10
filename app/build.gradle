@@ -40,6 +40,9 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:26.1.1')
     implementation 'com.google.firebase:firebase-auth'
     implementation "androidx.browser:browser:1.2.0"
+
+    // Recycler View
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
 }
 
 apply plugin: 'com.google.gms.google-services'

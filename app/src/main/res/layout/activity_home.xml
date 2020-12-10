@@ -7,18 +7,48 @@
     tools:context=".Home">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/logout_button"
-        android:layout_width="wrap_content"
+        android:id="@+id/display_contacts_button"
+        android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="50dp"
         android:background="@color/white"
-        android:text="Log Out"
+        android:text="My Contacts"
         android:textColor="@color/black"
+        app:backgroundTint="@color/white"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/settings_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/settings_button"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:text="Settings"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:backgroundTint="@color/white"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/logout_button"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/white"
+        android:text="Log Out"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
