@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "259592903051",
+    "project_id": "frenzy-55380",
+    "storage_bucket": "frenzy-55380.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259592903051:android:9bd39d63068cb254f5778e",
+        "android_client_info": {
+          "package_name": "com.ashish.frenzy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259592903051-1g6vuptkint67j1plb33rmp5i90mrms7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvM3f9otU8wQeuhLQtuX9P7i4HhlPwLXk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259592903051-1g6vuptkint67j1plb33rmp5i90mrms7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
