@@ -12,10 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Frenzy">
-        <activity android:name=".Settings_Activity"></activity>
-        <activity android:name=".Display_Contacts_Activity" />
-        <activity android:name=".Home" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Ui.Settings_Activity"></activity>
+        <activity android:name=".Ui.Display_Contacts_Activity" />
+        <activity android:name=".Ui.HomeActivity" />
+        <activity android:name=".Ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

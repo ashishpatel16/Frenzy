@@ -1,8 +1,10 @@
-package com.ashish.frenzy;
+package com.ashish.frenzy.Ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.ashish.frenzy.R;
 
 public class Settings_Activity extends AppCompatActivity {
 

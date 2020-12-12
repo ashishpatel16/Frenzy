@@ -1,4 +1,4 @@
-package com.ashish.frenzy;
+package com.ashish.frenzy.Model;
 
 public class Contact {
 

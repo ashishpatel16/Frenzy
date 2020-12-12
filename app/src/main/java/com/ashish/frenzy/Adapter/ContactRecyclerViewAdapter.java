@@ -1,6 +1,5 @@
-package com.ashish.frenzy;
+package com.ashish.frenzy.Adapter;
 
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ashish.frenzy.Model.Contact;
+import com.ashish.frenzy.R;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.ashish.frenzy;
+package com.ashish.frenzy.Ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.ashish.frenzy.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
@@ -21,11 +22,18 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
+    private static final String TAG = "LoginActivity";
     private TextInputEditText mPhoneNumber,mVerificationCode;
     private MaterialButton mSubmitButton;
     private FirebaseAuth mAuth;
@@ -42,11 +50,13 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         isUserLoggedIn();
+        // If user is logged in already, we directly jump to HomeActivity.
 
         mPhoneNumber = findViewById(R.id.ph_number_edittext);
         mVerificationCode = findViewById(R.id.code_edittext);
         mSubmitButton = findViewById(R.id.submit_code);
 
+        // Callback for Firebase Phone Auth
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             @Override
@@ -56,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onVerificationFailed(@NonNull FirebaseException e) {
-                Toast.makeText(MainActivity.this, "Something went Wrong. PLease Retry!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Something went Wrong. PLease Retry!", Toast.LENGTH_SHORT).show();
                 Log.i("debug",e.getMessage());
             }
 
@@ -83,27 +93,59 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void isUserLoggedIn() {
+        mUser = mAuth.getCurrentUser();
+        if(mUser != null) {
+            startActivity(new Intent(this, HomeActivity.class));
+            finish();
+        }
+    }
+
+    /** Handling Authentication*/
     private void signInWithPhoneAuthCredentials(PhoneAuthCredential phoneAuthCredential) {
         mAuth.signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(MainActivity.this, "Hurray! Login Success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Hurray! Login Success", Toast.LENGTH_SHORT).show();
+                    updateUserDatabase();
                     isUserLoggedIn();
                 }else {
-                    Toast.makeText(MainActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    private void isUserLoggedIn() {
-        mUser = mAuth.getCurrentUser();
-        if(mUser != null) {
-            startActivity(new Intent(this,Home.class));
-            finish();
+    private void updateUserDatabase() {
+        final FirebaseUser user = mAuth.getCurrentUser();
+        if(user != null) {
+            final DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("user").child(user.getUid());
+            mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(!snapshot.exists()) {
+                        Log.i(TAG, "onDataChange: Firebase User doesn't exist right now. Adding this user to Database.");
+
+                        HashMap<String, Object> newUser = new HashMap<>();
+                        newUser.put("name",user.getPhoneNumber());
+                        newUser.put("phone",user.getPhoneNumber());
+                        mDatabaseReference.updateChildren(newUser);
+
+                        Log.i(TAG, "onDataChange: Added new User.");
+                    }else {
+                        Log.i(TAG, "onDataChange: User already exists. No database Changes required.");
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.i(TAG, "onCancelled: Database Error : "+ error.getMessage());
+                }
+            });
         }
     }
+
 
     private void verifyPhoneNumberWithCode(String id) {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(id, mVerificationCode.getText().toString());
