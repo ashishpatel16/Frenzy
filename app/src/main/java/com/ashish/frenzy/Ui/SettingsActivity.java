@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.ashish.frenzy.R;
 
-public class Settings_Activity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

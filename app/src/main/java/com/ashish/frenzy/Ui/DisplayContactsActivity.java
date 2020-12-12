@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.ashish.frenzy.Methods.AuthUtils;
 
-public class Display_Contacts_Activity extends AppCompatActivity {
+public class DisplayContactsActivity extends AppCompatActivity {
 
     private static final String TAG = "Display_Contacts";
     private RecyclerView mRecyclerView;
@@ -63,7 +63,7 @@ public class Display_Contacts_Activity extends AppCompatActivity {
         while(cursor.moveToNext()) {
             String name = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
             String phone = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)).trim();
-            Contact newContact = new Contact(name,phone);
+            Contact newContact = new Contact("",name,phone);
             mPhoneContactsList.add(newContact);
             checkFrenzyUser(newContact);
         }
@@ -92,11 +92,10 @@ public class Display_Contacts_Activity extends AppCompatActivity {
                             ph = childSnapshot.child("phone").getValue().toString();
                             Log.i(TAG, "onDataChange: Got one");
                         }
-                        Contact mContact =  new Contact(name,ph);
+                        Contact mContact =  new Contact(childSnapshot.getKey(),name,ph);
                         if(name.equals(ph)) {
                            mContact.setName(newContact.getName());
                         }
-
                         mFrenzyUserList.add(mContact);
                         mRecyclerViewAdapter.notifyDataSetChanged();
                         return;

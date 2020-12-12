@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private MaterialButton mLogoutButton,mSettingsButton,mContactsButton;
+    private MaterialButton mLogoutButton,mSettingsButton,mContactsButton,mChatsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
         mLogoutButton = findViewById(R.id.logout_button);
         mContactsButton = findViewById(R.id.display_contacts_button);
         mSettingsButton = findViewById(R.id.settings_button);
+        mChatsButton = findViewById(R.id.my_chats_button);
 
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,16 +40,24 @@ public class HomeActivity extends AppCompatActivity {
         mContactsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Display_Contacts_Activity.class));
+                startActivity(new Intent(getApplicationContext(), DisplayContactsActivity.class));
             }
         });
 
         mSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Settings_Activity.class));
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
             }
         });
+
+        mChatsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), DisplayChatActivity.class));
+            }
+        });
+
 
     }
 

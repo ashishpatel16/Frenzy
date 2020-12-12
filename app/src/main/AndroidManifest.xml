@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ashish.frenzy">
 
-    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -12,8 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Frenzy">
-        <activity android:name=".Ui.Settings_Activity"></activity>
-        <activity android:name=".Ui.Display_Contacts_Activity" />
+        <activity android:name=".Ui.DisplayChatActivity"></activity>
+        <activity android:name=".Ui.SettingsActivity" />
+        <activity android:name=".Ui.DisplayContactsActivity" />
         <activity android:name=".Ui.HomeActivity" />
         <activity android:name=".Ui.LoginActivity">
             <intent-filter>

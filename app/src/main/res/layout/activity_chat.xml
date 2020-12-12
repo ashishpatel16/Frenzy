@@ -5,26 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Ui.DisplayContactsActivity"
+    tools:context=".Ui.DisplayChatActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Contacts"
-        android:textSize="28dp"
-        android:fontFamily="sans-serif"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:layout_marginTop="18dp"
-        style="@style/TextAppearance.AppCompat.Headline"
-        />
-
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_recyclerView"
+        android:layout_margin="4dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/display_contacts_recyclerView"
-        android:layout_marginTop="12dp"
         />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
