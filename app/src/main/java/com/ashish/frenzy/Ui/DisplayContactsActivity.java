@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
 
-import com.ashish.frenzy.Adapter.ContactRecyclerViewAdapter;
+import com.ashish.frenzy.Adapter.ContactListAdapter;
 import com.ashish.frenzy.Model.Contact;
 import com.ashish.frenzy.R;
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +31,7 @@ public class DisplayContactsActivity extends AppCompatActivity {
     private static final String TAG = "Display_Contacts";
     private RecyclerView mRecyclerView;
     private List<Contact> mPhoneContactsList, mFrenzyUserList;
-    private ContactRecyclerViewAdapter mRecyclerViewAdapter;
+    private ContactListAdapter mRecyclerViewAdapter;
     private DatabaseReference mDatabaseReference;
 
 
@@ -54,7 +54,7 @@ public class DisplayContactsActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.display_contacts_recyclerView);
         mRecyclerView.setHasFixedSize(false);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
-        mRecyclerViewAdapter = new ContactRecyclerViewAdapter(mFrenzyUserList);
+        mRecyclerViewAdapter = new ContactListAdapter(mFrenzyUserList);
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
     }
 

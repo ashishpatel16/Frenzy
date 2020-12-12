@@ -5,11 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,24 +18,24 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactRecyclerViewAdapter.Viewholder> {
+public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.Viewholder> {
 
     private List<Contact> mList;
 
-    public ContactRecyclerViewAdapter(List<Contact> list) {
+    public ContactListAdapter(List<Contact> list) {
         this.mList = list;
     }
 
     @NonNull
     @Override
-    public ContactRecyclerViewAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ContactListAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.contact_row,parent,false);
 
         return new Viewholder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ContactRecyclerViewAdapter.Viewholder holder, int position) {
+    public void onBindViewHolder(@NonNull ContactListAdapter.Viewholder holder, int position) {
         holder.name.setText(mList.get(position).getName());
         holder.phone.setText("+91 "+ mList.get(position).getPh_number());
         holder.layout.setOnClickListener(new View.OnClickListener() {
