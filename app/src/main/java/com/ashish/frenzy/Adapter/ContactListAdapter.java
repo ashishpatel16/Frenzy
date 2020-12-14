@@ -20,7 +20,7 @@ import java.util.List;
 
 public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.Viewholder> {
 
-    private List<Contact> mList;
+    private final List<Contact> mList;
 
     public ContactListAdapter(List<Contact> list) {
         this.mList = list;

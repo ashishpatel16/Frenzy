@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Frenzy">
-        <activity android:name=".Ui.ChatActivity"></activity>
+        <activity android:name=".Ui.DisplayMedia"></activity>
+        <activity android:name=".Ui.ChatActivity" />
         <activity android:name=".Ui.DisplayChatActivity" />
         <activity android:name=".Ui.SettingsActivity" />
         <activity android:name=".Ui.DisplayContactsActivity" />

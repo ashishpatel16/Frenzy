@@ -9,8 +9,69 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="4dp"
+        app:layout_constraintBottom_toTopOf="@id/input_layout"
         />
+
+
+    <LinearLayout
+        android:id="@+id/input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/media_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/message_editText"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.80"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="sans-serif"
+                    android:hint="Type Something"
+                    android:textColor="@color/black"
+                    android:background="@null"
+                    />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/add_media_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="0.15"
+                    android:backgroundTint="@color/white"
+                    app:icon="@drawable/ic_attach_file"
+                    app:iconGravity="textEnd"
+                    android:background="@android:color/transparent"
+                    app:iconTint="@color/purple_700" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/send_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.15"
+                    android:backgroundTint="@color/white"
+                    app:icon="@drawable/ic_send"
+                    app:iconGravity="textEnd"
+                    android:layout_marginRight="8dp"
+                    android:background="@android:color/transparent"
+                    app:iconTint="@color/purple_700" />
+            </LinearLayout>
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
