@@ -27,6 +27,7 @@ public class DisplayChatActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ChatListAdapter mAdapter;
     private List<Chat> mChatList;
+    private String contactName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,8 @@ public class DisplayChatActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()) {
                     for(DataSnapshot childSnapshot : snapshot.getChildren()) {
-                        Chat chat = new Chat(childSnapshot.getKey());
+                        Chat chat = new Chat(childSnapshot.getKey(), childSnapshot.getValue().toString());
+                        Log.i(TAG, "onDataChange: Value for this chat ID "+ childSnapshot.getValue().toString());
                         // Redundancy check for chats
                         boolean isRepeated = false;
                         for(Chat obj : mChatList) {

@@ -4,7 +4,6 @@ public class Contact {
 
     private String name;
     private String ph_number;
-    private int display_picture;
     private String Uid;
 
     public String getUid() {
@@ -37,11 +36,4 @@ public class Contact {
         this.ph_number = ph_number;
     }
 
-    public int getDisplay_picture() {
-        return display_picture;
-    }
-
-    public void setDisplay_picture(int display_picture) {
-        this.display_picture = display_picture;
-    }
 }

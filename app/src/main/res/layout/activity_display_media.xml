@@ -9,11 +9,10 @@
     android:background="#252525">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="80dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/display_media_recyclerView"
-        android:layout_gravity="center"
+        android:layout_gravity="center_vertical"
         />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

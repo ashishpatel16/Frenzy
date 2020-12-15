@@ -3,6 +3,7 @@ package com.ashish.frenzy.Adapter;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -49,7 +50,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.Viewholder> {
 
     @Override
     public void onBindViewHolder(@NonNull ChatAdapter.Viewholder holder, int position) {
-
+        holder.setIsRecyclable(false);
         if(mMessageList.get(position).getSenderId().equals(mSenderId)) {
             Drawable drawable = holder.itemView.getContext().getDrawable(R.drawable.sender_message_bg);
             holder.layout.setBackground(drawable);
@@ -72,9 +73,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.Viewholder> {
             });
         }
 
-        holder.senderId.setText(mMessageList.get(position).getSenderId());
+        //holder.senderId.setText(mMessageList.get(position).getSenderId());
         if(!mMessageList.get(position).getText().isEmpty()) {
             holder.message.setText(mMessageList.get(position).getText());
+        }else {
+            holder.message.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
         }
     }
 
@@ -91,7 +94,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.Viewholder> {
         public Viewholder(@NonNull View itemView) {
             super(itemView);
             message = itemView.findViewById(R.id.message);
-            senderId = itemView.findViewById(R.id.senderId);
+            // senderId = itemView.findViewById(R.id.senderId);
             layout = itemView.findViewById(R.id.message_layout);
             mediaButton = itemView.findViewById(R.id.view_media);
         }

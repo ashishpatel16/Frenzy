@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.ashish.frenzy.Adapter.ContactListAdapter;
 import com.ashish.frenzy.Model.Contact;
@@ -40,6 +41,8 @@ public class DisplayContactsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display__contacts_);
 
+        Toast.makeText(this, "Wait while we load Contacts that already use Frenzy...", Toast.LENGTH_SHORT).show();
+
         mPhoneContactsList = new ArrayList<>();
         mFrenzyUserList = new ArrayList<>();
 
@@ -67,6 +70,7 @@ public class DisplayContactsActivity extends AppCompatActivity {
             mPhoneContactsList.add(newContact);
             checkFrenzyUser(newContact);
         }
+
 
     }
 

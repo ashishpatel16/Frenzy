@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.ashish.frenzy.Adapter.ChatAdapter;
 import com.ashish.frenzy.Adapter.MediaAdapter;
@@ -96,6 +96,20 @@ public class ChatActivity extends AppCompatActivity {
         mChatRecyclerView.setLayoutManager(mChatLayoutManager);
         mChatAdapter = new ChatAdapter(mChatList,mSenderId);
         mChatRecyclerView.setAdapter(mChatAdapter);
+
+        mChatRecyclerView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View view, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                if ( bottom < oldBottom) {
+                    mChatRecyclerView.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mChatRecyclerView.smoothScrollToPosition(mChatAdapter.getItemCount());
+                        }
+                    }, 10);
+                }
+            }
+        });
     }
 
     private void initMediaRecyclerView() {
@@ -122,7 +136,7 @@ public class ChatActivity extends AppCompatActivity {
             if (mAttachedMedia.isEmpty()) {
                 mMessageDatabaseReference.updateChildren(map);
             }else {
-
+                Toast.makeText(this, "Sending Media", Toast.LENGTH_SHORT).show();
                 List<String> mediaLinks = new ArrayList<>();
                 List<String> mediaIDs = new ArrayList<>();
 
@@ -182,7 +196,6 @@ public class ChatActivity extends AppCompatActivity {
                         mAttachedMedia.add(data.getClipData().getItemAt(i).getUri().toString());
                     }
                 }
-
                 mMediaAdapter.notifyDataSetChanged();
             }
         }
@@ -229,6 +242,4 @@ public class ChatActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {}
         });
     }
-
-
 }

@@ -20,8 +20,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Toast.makeText(this, "Congrats, You've successfully logged in to Frenzy!!!", Toast.LENGTH_SHORT).show();
-
         mLogoutButton = findViewById(R.id.logout_button);
         mContactsButton = findViewById(R.id.display_contacts_button);
         mSettingsButton = findViewById(R.id.settings_button);

@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String phNumber = mPhoneNumber.getText().toString();
+                String phNumber = "+91" + mPhoneNumber.getText().toString();
                 if(mVerficationID != null) {
                     verifyPhoneNumberWithCode(mVerficationID);
                 }else {
@@ -161,8 +161,6 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         mAuth.setLanguageCode("en");
         PhoneAuthProvider.verifyPhoneNumber(options);
-
-
     }
 
 

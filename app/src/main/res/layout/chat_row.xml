@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="8dp"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     android:id="@+id/chat_layout"
     android:outlineProvider="bounds"
     android:clipToPadding="false"
+    android:elevation="0.5dp"
     >
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/chat_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingVertical="4dp"
-        android:paddingHorizontal="24dp"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="32dp"
         android:text="Chat Title"
         android:textColor="@color/purple_700"
         android:gravity="center_vertical"
-        android:textSize="16dp"
+        android:textSize="24dp"
         android:layout_marginTop="2dp"
         />
 
